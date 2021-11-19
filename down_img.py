@@ -4,6 +4,7 @@ import requests  # to get image from the web
 import shutil  # to save it locally
 
 def img_down(image_url):
+    #the images are saved at the root of the project in the image folder.
     CUR_DIR = os.path.dirname(os.path.abspath(__file__))
     IMG_DIR = os.path.join(CUR_DIR, "images")
     ## Set up the image URL and filename

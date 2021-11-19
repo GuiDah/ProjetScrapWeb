@@ -79,17 +79,17 @@ def scrap_all_categories(url):
 
 
 def main():
+    #We get the url of each category. Then the number of items (books) by categories. We collect all the information of each book by categories. And we save in a csv file
     infos_books = scrap_all_categories(url="http://books.toscrape.com/index.html")
     cat_book = []
     for page_cat in infos_books:
         cont = link_url_category(page_cat)
-        print(cont)
         all_pages = list_pages_in_category(cont)
-        #name_csv = page_cat.split('/')[-2]
+        name_csv = page_cat.split('/')[-2]
         for pages in all_pages:
             cat_book += scrap_one_categories(pages)
-        #writer_book(cat_book, name_csv, option="write")
-        #cat_book = []
+        writer_book(cat_book, name_csv, option="write")
+        cat_book = []
         """print(cat_book)"""
     return cat_book
 
