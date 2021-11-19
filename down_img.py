@@ -7,7 +7,6 @@ def img_down(image_url):
     CUR_DIR = os.path.dirname(os.path.abspath(__file__))
     IMG_DIR = os.path.join(CUR_DIR, "images")
     ## Set up the image URL and filename
-    #image_url = "https://cdn.pixabay.com/photo/2020/02/06/09/39/summer-4823612_960_720.jpg"
     filename =image_url.split("/")[-1]
 
     # Open the url image, set stream to True, this will return the stream content.

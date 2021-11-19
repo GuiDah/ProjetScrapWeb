@@ -1,20 +1,18 @@
-import csv
-import os
-
 import requests
 from bs4 import BeautifulSoup
 from math import ceil
 
 from book import book
-from down_img import img_down
 from csv_book import writer_book
 
 def lien_html(lien):
 
+    """this function is used to reconstitute the complete url of a book. When finding href and remove the ("../", "") """
+
     nouveau_lien = "http://books.toscrape.com/catalogue/"+lien.replace("../", "")
     return nouveau_lien
 
-def link_url_catgegory(lienCat):
+def link_url_category(lienCat):
 
     """cette fonction prends en paramétres lienCat qui est rajoutée au lien du site"""
 
@@ -84,13 +82,14 @@ def main():
     infos_books = scrap_all_categories(url="http://books.toscrape.com/index.html")
     cat_book = []
     for page_cat in infos_books:
-        cont = link_url_catgegory(page_cat)
+        cont = link_url_category(page_cat)
+        print(cont)
         all_pages = list_pages_in_category(cont)
-        name_csv = page_cat.split('/')[-2]
+        #name_csv = page_cat.split('/')[-2]
         for pages in all_pages:
             cat_book += scrap_one_categories(pages)
-        writer_book(cat_book, name_csv, option="write")
-        cat_book = []
+        #writer_book(cat_book, name_csv, option="write")
+        #cat_book = []
         """print(cat_book)"""
     return cat_book
 
